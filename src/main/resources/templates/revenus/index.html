@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='Liste des Revenus')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <div class="container mt-5">
+        <h1 class="text-center">Liste des Revenus</h1>
+        <div class="row">
+            <div class="col-md-12 text-right mb-3">
+                <a href="/revenus/form" class="btn btn-success">Ajouter un Revenu</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Montant</th>
+                            <th>Chauffeur</th>
+                            <th>Véhicule</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="revenu : ${revenus}">
+                            <td th:text="${revenu.id}">1</td>
+                            <td th:text="${revenu.date}">Date</td>
+                            <td th:text="${revenu.montant}">Montant</td>
+                            <td th:text="${revenu.chauffeur.nom}">Chauffeur</td>
+                            <td th:text="${revenu.vehicule.marque} + ' ' + ${revenu.vehicule.modele}">Véhicule</td>
+                            <td>
+                                <a th:href="@{'/revenus/edit/' + ${revenu.id}}" class="btn btn-primary btn-sm">Éditer</a>
+                                <a th:href="@{'/revenus/delete/' + ${revenu.id}}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{_commun_/footer :: footer}"></footer>
+</body>
+</html>

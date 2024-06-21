@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='Liste des Utilisateurs')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <main class="container">
+        <div class="page-header">
+            <h1>Liste des Utilisateurs</h1>
+        </div>
+        <div class="page-actions">
+            <a href="/users/form" class="btn btn-success">Ajouter un Utilisateur</a>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${users}">
+                            <td th:text="${user.id}">1</td>
+                            <td th:text="${user.nom}">Nom</td>
+                            <td th:text="${user.prenom}">Prénom</td>
+                            <td th:text="${user.email}">Email</td>
+                            <td th:text="${user.role}">Role</td>
+                            <td>
+                                <a th:href="@{'/users/edit/' + ${user.id}}" class="btn btn-primary btn-sm">Éditer</a>
+                                <a th:href="@{'/users/delete/' + ${user.id}}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <th:block th:replace="~{_commun_/footer :: footer}"></th:block>
+</body>
+</html>

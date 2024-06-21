@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (title)">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Titre par défaut</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <header th:fragment="header">
+        <nav class="navbar">
+            <a class="navbar-brand" href="#">SGIVT Logo</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/users/index}">Utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/vehicules/index}">Véhicules</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/revenus/index}">Revenus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/maintenances/index}">Maintenances</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/feedbacks/index}">Feedbacks</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav-right">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Se déconnecter</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

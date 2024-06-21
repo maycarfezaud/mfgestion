@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='Liste des Feedbacks')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <div class="container mt-5">
+        <h1 class="text-center">Liste des Feedbacks</h1>
+        <div class="row">
+            <div class="col-md-12 text-right mb-3">
+                <a href="/feedbacks/form" class="btn btn-success">Ajouter un Feedback</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Commentaire</th>
+                    <th>Note</th>
+                    <th>Chauffeur</th>
+                    <th>Véhicule</th>
+                    <th>Passager</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="feedback : ${feedbacks}">
+                    <td th:text="${feedback.date}">Date</td>
+                    <td th:text="${feedback.commentaire}">Commentaire</td>
+                    <td th:text="${feedback.note}">Note</td>
+                    <td th:text="${feedback.chauffeur != null ? feedback.chauffeur.nom + ' ' + feedback.chauffeur.prenom : 'N/A'}">Chauffeur</td>
+                    <td th:text="${feedback.vehicule != null ? feedback.vehicule.marque + ' ' + feedback.vehicule.modele : 'N/A'}">Véhicule</td>
+                    <td th:text="${feedback.passager != null ? feedback.passager.nom + ' ' + feedback.passager.prenom : 'N/A'}">Passager</td>
+                    <td>
+                        <a th:href="@{/feedbacks/edit/{id}(id=${feedback.id})}" class="btn btn-primary">Edit</a>
+                        <a th:href="@{/feedbacks/delete/{id}(id=${feedback.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer th:replace="~{_commun_/footer :: footer}"></footer>
+</body>
+</html>

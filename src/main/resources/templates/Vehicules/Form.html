@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='Formulaire Véhicule')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <div class="container mt-5">
+        <div class="user-form-container">
+            <h1 class="user-form-header" th:text="${vehicule.id != null} ? 'Éditer Véhicule' : 'Ajouter Véhicule'">Formulaire Véhicule</h1>
+            <form th:action="@{/vehicules/save}" th:object="${vehicule}" method="post" class="user-form">
+                <div class="form-group">
+                    <label for="marque">Marque</label>
+                    <input type="text" id="marque" th:field="*{marque}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="modele">Modèle</label>
+                    <input type="text" id="modele" th:field="*{modele}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="immatriculation">Immatriculation</label>
+                    <input type="text" id="immatriculation" th:field="*{immatriculation}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="annee">Année</label>
+                    <input type="number" id="annee" th:field="*{annee}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="kilometrage">Kilométrage</label>
+                    <input type="number" id="kilometrage" th:field="*{kilometrage}" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="~{_commun_/footer :: footer}"></footer>
+</body>
+</html>

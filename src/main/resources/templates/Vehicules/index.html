@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='Liste des Véhicules')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <div class="container mt-5">
+        <h1 class="text-center">Liste des Véhicules</h1>
+        <div class="row">
+            <div class="col-md-12 text-right mb-3">
+                <a href="/vehicules/form" class="btn btn-success">Ajouter un Véhicule</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Marque</th>
+                            <th>Modèle</th>
+                            <th>Immatriculation</th>
+                            <th>Année</th>
+                            <th>Kilométrage</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="vehicule : ${vehicules}">
+                            <td th:text="${vehicule.id}">1</td>
+                            <td th:text="${vehicule.marque}">Marque</td>
+                            <td th:text="${vehicule.modele}">Modèle</td>
+                            <td th:text="${vehicule.immatriculation}">Immatriculation</td>
+                            <td th:text="${vehicule.annee}">Année</td>
+                            <td th:text="${vehicule.kilometrage}">Kilométrage</td>
+                            <td>
+                                <a th:href="@{'/vehicules/edit/' + ${vehicule.id}}" class="btn btn-primary btn-sm">Éditer</a>
+                                <a th:href="@{'/vehicules/delete/' + ${vehicule.id}}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{_commun_/footer :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='Liste des Maintenances')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <div class="container mt-5">
+        <h1 class="text-center">Liste des Maintenances</h1>
+        <div class="row">
+            <div class="col-md-12 text-right mb-3">
+                <a href="/maintenances/form" class="btn btn-success">Ajouter une Maintenance</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date Prévue</th>
+                            <th>Date de Panne</th>
+                            <th>Description</th>
+                            <th>Coût</th>
+                            <th>Véhicule</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="maintenance : ${maintenances}">
+                            <td th:text="${maintenance.id}">1</td>
+                            <td th:text="${maintenance.dateMaintenance}">Date Prévue</td>
+                            <td th:text="${maintenance.datePanne}">Date de Panne</td>
+                            <td>
+                                <div class="scrollable-box">
+                                    <p th:text="${maintenance.description}"></p>
+                                </div>
+                            </td>
+                            <td th:text="${maintenance.cout}">Coût</td>
+                            <td th:text="${maintenance.vehicule.marque} + ' ' + ${maintenance.vehicule.modele}">Véhicule</td>
+                            <td>
+                                <a th:href="@{'/maintenances/edit/' + ${maintenance.id}}" class="btn btn-primary btn-sm">Éditer</a>
+                                <a th:href="@{'/maintenances/delete/' + ${maintenance.id}}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{_commun_/footer :: footer}"></footer>
+</body>
+</html>
