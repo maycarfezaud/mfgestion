@@ -20,7 +20,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
+        http.authorizeRequests(authorize -> authorize
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/users/**").hasRole("ADMIN")
                 .requestMatchers("/vehicules/**").hasAnyRole("ADMIN", "CHAUFFEUR")
@@ -31,6 +31,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/login")
+                .defaultSuccessUrl("/users/index", true) // Redirection après connexion réussie
                 .permitAll()
             )
             .logout(logout -> logout

@@ -1,6 +1,7 @@
 package com.mfgestion.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.mfgestion.model.User;
 import com.mfgestion.repository.UserRepository;
@@ -14,7 +15,19 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public User saveUser(User user) {
+        if (user.getId() == null) { // Nouvelle inscription
+            user.setMdp(passwordEncoder.encode(user.getMdp()));
+        } else { // Mise à jour
+            Optional<User> existingUser = userRepository.findById(user.getId());
+            if (existingUser.isPresent() && !existingUser.get().getMdp().equals(user.getMdp())) {
+                // Si le mot de passe a changé, on l'encode
+                user.setMdp(passwordEncoder.encode(user.getMdp()));
+            }
+        }
         return userRepository.save(user);
     }
 

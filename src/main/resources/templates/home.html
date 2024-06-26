@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_commun_/header :: head (title='SGIVT - Home')}"></head>
+<body>
+    <th:block th:replace="~{_commun_/header :: header}"></th:block>
+    
+    <div class="container mt-5">
+        <h1>Bienvenue chez SGIVT</h1>
+        <section>
+            <h2>Présentation de l'entreprise</h2>
+            <p>
+                SGIVT est une entreprise dédiée à fournir des services de gestion de véhicules et de transport. Notre mission est de...
+            </p>
+            <!-- Ajoutez plus de contenu ici -->
+        </section>
+    </div>
+    
+    <th:block th:replace="~{_commun_/footer :: footer}"></th:block>
+</body>
+</html>
