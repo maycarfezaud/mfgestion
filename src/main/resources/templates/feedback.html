@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div th:replace="commun1 :: header"></div>
+    <main class="container">
+        <h1>Feedback</h1>
+        <form th:action="@{/feedback}" th:object="${feedback}" method="post">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" th:field="*{date}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="commentaire">Commentaire:</label>
+                <textarea id="commentaire" th:field="*{commentaire}" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="note">Note:</label>
+                <input type="number" id="note" th:field="*{note}" class="form-control" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="chauffeur">Chauffeur:</label>
+                <select id="chauffeur" th:field="*{chauffeur.id}" class="form-control" required>
+                    <option th:each="chauffeur : ${chauffeurs}" th:value="${chauffeur.id}" th:text="${chauffeur.nom} + ' ' + ${chauffeur.prenom}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vehicule">Véhicule:</label>
+                <select id="vehicule" th:field="*{vehicule.id}" class="form-control" required>
+                    <option th:each="vehicule : ${vehicules}" th:value="${vehicule.id}" th:text="${vehicule.marque} + ' ' + ${vehicule.modele}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="passager">Passager:</label>
+                <select id="passager" th:field="*{passager.id}" class="form-control" required>
+                    <option th:each="passager : ${passagers}" th:value="${passager.id}" th:text="${passager.nom} + ' ' + ${passager.prenom}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
+        <h2>Avis des utilisateurs</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Commentaire</th>
+                    <th>Note</th>
+                    <th>Chauffeur</th>
+                    <th>Véhicule</th>
+                    <th>Passager</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="feedback : ${feedbacks}">
+                    <td th:text="${#dates.format(feedback.date, 'yyyy-MM-dd')}">2024-01-01</td>
+                    <td th:text="${feedback.commentaire}">Commentaire</td>
+                    <td th:text="${feedback.note}">5</td>
+                    <td th:text="${feedback.chauffeur != null ? feedback.chauffeur.nom : 'N/A'}">Chauffeur</td>
+                    <td th:text="${feedback.vehicule != null ? feedback.vehicule.marque : 'N/A'}">Véhicule</td>
+                    <td th:text="${feedback.passager != null ? feedback.passager.nom : 'N/A'}">Passager</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <div th:replace="commun1 :: footer"></div>
+</body>
+</html>

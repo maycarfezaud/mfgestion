@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>À propos de nous</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles1.css}" />
+</head>
+<body>
+    <div th:replace="commun1 :: header"></div>
+
+    <main>
+        <div class="container">
+            <h1>À propos de SGIVT</h1>
+            <p>SGIVT est une entreprise innovante dédiée à offrir des services de transport de haute qualité. Notre mission est de fournir des solutions de transport sûres, fiables et abordables pour nos clients.</p>
+            <h2>Notre équipe</h2>
+            <p>Nous avons une équipe de professionnels dévoués qui travaillent jour et nuit pour vous offrir le meilleur service possible.</p>
+            <h2>Nos valeurs</h2>
+            <ul>
+                <li>Sécurité</li>
+                <li>Fiabilité</li>
+                <li>Innovation</li>
+                <li>Service client</li>
+            </ul>
+        </div>
+    </main>
+
+    <div th:replace="commun1 :: footer"></div>
+</body>
+</html>

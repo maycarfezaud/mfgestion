@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="commun1 :: head ('Login')">
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+    <div th:replace="commun1 :: header"></div>
+    <main class="container">
+        <h1>Login</h1>
+        <form th:action="@{/login}" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div th:if="${param.error}">
+            Invalid username or password.
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <div th:if="${param.logout}">
+            You have been logged out.
         </div>
-        <div>
-            <button type="submit">Login</button>
-        </div>
-    </form>
-    <div th:if="${param.error}">
-        Invalid username or password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
+    </main>
+    <div th:replace="commun1 :: footer"></div>
 </body>
 </html>

@@ -1,0 +1,46 @@
+/* styles1.css */
+
+/* Reset some default styles for the new navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.navbar-brand {
+    flex: 0 1 auto;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 15px;
+}
+
+.navbar-nav .nav-item a {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item a:hover {
+    color: #ff6600; /* Change this color to match your theme */
+}
+
+.navbar-nav-right {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 1 auto;
+}
