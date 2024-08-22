@@ -46,7 +46,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px; /* Adjust as needed */
+    height: 70px; 
     padding: 0 20px;
 }
 
@@ -73,7 +73,7 @@ nav {
 }
 
 .navbar-nav .nav-item a:hover {
-    color: #ff6600; /* Change this color to match your theme */
+    color: #ff6600; 
 }
 
 .navbar-nav-right {
@@ -83,7 +83,7 @@ nav {
 /* Page specific styles */
 .container {
     max-width: 1200px;
-    margin: 100px auto 20px auto; /* Adjusted for margin-top and bottom */
+    margin: 100px auto 20px auto; 
     padding: 20px;
 }
 
@@ -99,17 +99,17 @@ nav {
 
 /* Table styles */
 .table th, .table td {
-    padding: 15px; /* Adjust the padding as needed */
+    padding: 15px; 
     text-align: left;
 }
 
 .table th {
-    background-color: #f8f9fa; /* Optional: Add a background color to table headers */
+    background-color: #f8f9fa; 
     font-weight: bold;
 }
 
 .table td {
-    border-top: 1px solid #dee2e6; /* Optional: Add a border to the top of each table cell */
+    border-top: 1px solid #dee2e6;
 }
 
 /* User form specific styles */

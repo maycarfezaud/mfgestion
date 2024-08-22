@@ -23,14 +23,14 @@ public class FeedbackController {
     public String getAllFeedbacks(Model model) {
         List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
         model.addAttribute("feedbacks", feedbacks);
-        return "feedbacks/index"; // Vérifiez que "index.html" existe dans src/main/resources/templates/feedbacks/
+        return "feedbacks/index"; 
     }
 
     @GetMapping("/form")
     public String showFeedbackForm(Model model) {
         Feedback feedback = new Feedback();
         model.addAttribute("feedback", feedback);
-        return "feedbacks/form"; // Vérifiez que "form.html" existe dans src/main/resources/templates/feedbacks/
+        return "feedbacks/form";
     }
 
     @GetMapping("/edit/{id}")
@@ -38,7 +38,7 @@ public class FeedbackController {
         Optional<Feedback> feedbackOptional = feedbackService.getFeedbackById(id);
         if (feedbackOptional.isPresent()) {
             model.addAttribute("feedback", feedbackOptional.get());
-            return "feedbacks/form"; // Vérifiez que "form.html" existe dans src/main/resources/templates/feedbacks/
+            return "feedbacks/form";
         } else {
             return "redirect:/feedbacks/index";
         }
